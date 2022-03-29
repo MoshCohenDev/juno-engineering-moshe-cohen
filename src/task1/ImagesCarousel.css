@@ -27,7 +27,7 @@
 }
 
 .imageNotExits {
-	visibility: hidden;
+	display: none;
 }
 .loading {
 	min-height: 500px;
