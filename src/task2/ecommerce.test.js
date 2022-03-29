@@ -1,13 +1,13 @@
 import { fetchOrderById } from '../api';
 import { fetchAllOrders, bucketOrdersByUsers, getLast2WeeksOrders, bucketOrdersByDate } from './ecommerce';
 
-// const ORDER_ID = '70ef599e5eca171b2bce84d1';
+const ORDER_ID = '70ef599e5eca171b2bce84d1';
 
-// test('Ecommerce - fetchOrderById', async () => {
-// 	let orders = await fetchOrderById(ORDER_ID);
-// 	console.log(orders);
-// 	expect(orders).toBeTruthy();
-// });
+test('Ecommerce - fetchOrderById', async () => {
+	let orders = await fetchOrderById(ORDER_ID);
+	console.log(orders);
+	expect(orders).toBeTruthy();
+});
 
 test('Ecommerce - fetchAllOrders', async () => {
 	let allOrders = await fetchAllOrders();

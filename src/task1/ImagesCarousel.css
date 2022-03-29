@@ -4,6 +4,7 @@
 	align-items: center;
 	min-height: 100vh;
 }
+
 .button {
 	margin: 30px;
 }
@@ -14,12 +15,7 @@
 	cursor: pointer;
 }
 .imageExits {
-	visibility: visible;
-	animation: fadeIn ease 6s;
-	-webkit-animation: fadeIn ease 6s;
-	-moz-animation: fadeIn ease 6s;
-	-o-animation: fadeIn ease 6s;
-	-ms-animation: fadeIn ease 6s;
+	animation: fadeIn ease 3s;
 }
 @keyframes fadeIn {
 	0% {
@@ -30,41 +26,6 @@
 	}
 }
 
-@-moz-keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@-webkit-keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@-o-keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@-ms-keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
 .imageNotExits {
 	visibility: hidden;
 }

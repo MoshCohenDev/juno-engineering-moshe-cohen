@@ -25,7 +25,7 @@ const ImageCarousel = () => {
 
 	useEffect(() => {
 		getAllImages();
-	}, []);
+	}, [isLoadingImage]);
 	return (
 		<div className="images_container">
 			{!isLoading ? (
@@ -42,7 +42,7 @@ const ImageCarousel = () => {
 					></ArrowBackIosNewIcon>
 					<img
 						loading="lazy"
-						className={isLoading ? 'imageExits' : 'imageNotExits'}
+						className={!isLoadingImage ? 'imageExits' : 'imageNotExits'}
 						style={{
 							height: '40rem',
 							width: '40rem',
