@@ -11,8 +11,9 @@ const ImageCarousel = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [isLoadingImage, setIsLoadingImage] = useState(false);
 
-	const getAll = async () => {
+	const getAllImages = async () => {
 		try {
+			setLoading(false);
 			const data = await fetchImageUrls();
 			setImages(data);
 		} catch (error) {
@@ -21,12 +22,12 @@ const ImageCarousel = () => {
 			setLoading(true);
 		}
 	};
+
 	useEffect(() => {
-		getAll();
+		getAllImages();
 	}, []);
 	return (
 		<div className="images_container">
-			{/* <div class="numbertext">{images.length}</div> */}
 			{!isLoading ? (
 				<div className="loading">
 					<CircularProgress />
@@ -40,10 +41,9 @@ const ImageCarousel = () => {
 						}}
 					></ArrowBackIosNewIcon>
 					<img
-						onLoad={() => isLoadingImage(true)}
-						className={isLoadingImage ? 'imageNotExits' : 'imageExits'}
+						loading="lazy"
+						className={isLoading ? 'fade-in' : 'imageNotExits'}
 						style={{
-							visibility: isLoadingImage ? 'hidden' : 'visible',
 							height: '40rem',
 							width: '40rem',
 							borderRadius: '50px',
