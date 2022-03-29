@@ -42,7 +42,7 @@ const ImageCarousel = () => {
 					></ArrowBackIosNewIcon>
 					<img
 						loading="lazy"
-						className={isLoading ? 'fade-in' : 'imageNotExits'}
+						className={isLoading ? 'imageExits' : 'imageNotExits'}
 						style={{
 							height: '40rem',
 							width: '40rem',
