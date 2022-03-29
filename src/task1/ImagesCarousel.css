@@ -8,6 +8,9 @@
 .button {
 	margin: 30px;
 }
+.buttonNot {
+	display: none;
+}
 .button:hover {
 	background-color: grey;
 	size: 40px;
@@ -15,7 +18,7 @@
 	cursor: pointer;
 }
 .imageExits {
-	animation: fadeIn ease 3s;
+	animation: fadeIn ease 2s;
 }
 @keyframes fadeIn {
 	0% {
@@ -27,7 +30,8 @@
 }
 
 .imageNotExits {
-	display: none;
+	visibility: hidden;
+	overflow: hidden;
 }
 .loading {
 	min-height: 500px;

@@ -4,6 +4,7 @@ import './ImagesCarousel.css';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Hidden } from '@mui/material';
 
 const ImageCarousel = () => {
 	const [images, setImages] = useState([]);
@@ -12,10 +13,11 @@ const ImageCarousel = () => {
 	const [isLoadingImage, setIsLoadingImage] = useState(false);
 
 	const getAllImages = async () => {
+		setLoading(false);
 		try {
-			setLoading(false);
 			const data = await fetchImageUrls();
 			setImages(data);
+			setIsLoadingImage(true);
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -25,7 +27,7 @@ const ImageCarousel = () => {
 
 	useEffect(() => {
 		getAllImages();
-	}, []);
+	}, [images[activeIndex]]);
 	return (
 		<div className="images_container">
 			{!isLoading ? (
@@ -35,23 +37,28 @@ const ImageCarousel = () => {
 			) : (
 				<>
 					<ArrowBackIosNewIcon
-						className="button"
+						className={isLoadingImage ? 'button' : 'buttonNot'}
 						onClick={() => {
 							setActiveIndex(activeIndex < 1 ? images.length - 1 : activeIndex - 1);
 						}}
-					></ArrowBackIosNewIcon>
-					<img
-						onLoad={() => setIsLoadingImage({ isLoadingImage: true })}
-						className={isLoadingImage ? 'imageExits' : 'imageNotExits'}
-						src={images[activeIndex]}
-						style={{ height: '40rem', width: '40rem', borderRadius: '50px' }}
 					/>
+					{!isLoadingImage ? (
+						<div className="loading">
+							<CircularProgress />
+						</div>
+					) : (
+						<img
+							src={images[activeIndex]}
+							className={isLoadingImage ? 'imageExits' : 'imageNotExits'}
+							style={{ height: '40rem', width: '40rem', borderRadius: '50px' }}
+						/>
+					)}
 					<ArrowForwardIosIcon
-						className="button"
+						className={isLoadingImage ? 'button' : 'buttonNot'}
 						onClick={() => {
 							setActiveIndex(activeIndex === images.length - 1 ? 0 : activeIndex + 1);
 						}}
-					></ArrowForwardIosIcon>
+					/>
 				</>
 			)}
 		</div>
